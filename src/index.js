@@ -5,7 +5,7 @@ import App from './components/App';
 import './index.css';
 
 render(
-  <BrowserRouter>
+  <BrowserRouter basename="fe-03-react/build">
     <Route path="/" component={App} />
   </BrowserRouter>,
   document.getElementById('root'),
