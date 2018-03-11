@@ -1,0 +1,2 @@
+webpackJsonp([2],{87:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=n(0),a=n.n(o),u=function(e){var t=e.history,n=e.location,o=e.onLogIn,u=e.onLogOut;return a.a.createElement("div",null,a.a.createElement("h1",null,"Login Page"),a.a.createElement("button",{onClick:function(){o();var e=n.state?n.state.from:"/";t.push(e)}},"Login"),a.a.createElement("button",{onClick:function(){u(),t.push("/")}},"Logout"))};t.default=u}});
+//# sourceMappingURL=2.1e8d6b00.chunk.js.map
