@@ -15,5 +15,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": ""
+  "homepage": "https://axzerk.github.io/fe-03-react/build"
 }
