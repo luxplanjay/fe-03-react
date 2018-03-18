@@ -1,107 +1,43 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Navigation from './Navigation';
-// import HomePage from './HomePage';
-// import TopicsPage from './TopicsPage';
-// import LoginPage from './LoginPage';
-// import ProfilePage from './ProfilePage';
-import PrivateRoute from './PrivateRoute';
-
-import List from './List';
 import Loader from './Loader';
-import CheckAuth from './CheckAuth';
-
-import LoadableComponent from './LoadableComponent';
-
-const AsyncHome = LoadableComponent({
-  loader: () => import(`./HomePage`),
-  loading: Loader,
-});
-
-const AsyncTopics = LoadableComponent({
-  loader: () => import(`./TopicsPage`),
-  loading: Loader,
-});
-
-const AsyncLogin = LoadableComponent({
-  loader: () => import(`./LoginPage`),
-  loading: Loader,
-});
-
-const AsyncProfile = LoadableComponent({
-  loader: () => import(`./ProfilePage`),
-  loading: Loader,
-});
+import { connect } from 'react-redux';
+import NoteForm from './NoteForm';
+import NotesList from './NotesList';
+import './App.css';
 
 export default class App extends Component {
   state = {
-    data: [],
-    isLoading: true,
-    isLoggedIn: false,
+    inputValue: 0,
   };
 
-  logIn = () => {
-    this.setState({
-      isLoggedIn: true,
-    });
+  handleInputChange = evt => {
+    const value = evt.target.value;
+    this.setState({ inputValue: Number(value) });
   };
-
-  logOut = () => {
-    this.setState({
-      isLoggedIn: false,
-    });
-  };
-
-  componentDidMount() {
-    setTimeout(
-      () =>
-        this.setState({
-          data: [1, 2, 3, 4, 5],
-          isLoading: false,
-        }),
-      1000,
-    );
-  }
 
   render() {
-    const { isLoggedIn, data, isLoading } = this.state;
+    const { inputValue } = this.state;
 
     return (
       <div>
-        {/* <CheckAuth isLoggedIn={isLoggedIn}>
-          {(msg, value) => <h1>{msg}, {value}</h1>}
-        </CheckAuth> */}
+        {/* <div className="App__form">
+          <NoteForm />
+        </div>
+        <div className="App__list">
+          <NotesList />
+        </div> */}
 
-        {/* <List isLoading={isLoading} items={data} /> */}
+        <h2>Account balance: 0$</h2>
 
-        <Navigation isLoggedIn={isLoggedIn} />
-
-        <Switch>
-          <Route exact path="/" component={AsyncHome} />
-          <Route
-            path="/login"
-            render={props => (
-              <AsyncLogin
-                onLogIn={this.logIn}
-                onLogOut={this.logOut}
-                {...props}
-              />
-            )}
+        <div>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={this.handleInputChange}
           />
-          <PrivateRoute
-            path="/topics"
-            isAuthenticated={isLoggedIn}
-            redirectTo="/login"
-            component={AsyncTopics}
-          />
-          <PrivateRoute
-            path="/profile"
-            isAuthenticated={isLoggedIn}
-            redirectTo="/login"
-            component={AsyncProfile}
-          />
-          <Route render={() => <h1>404</h1>} />
-        </Switch>
+          <button>Deposit</button>
+          <button>Withdraw</button>
+        </div>
       </div>
     );
   }

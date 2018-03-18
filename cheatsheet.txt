@@ -1,0 +1,46 @@
+http://www.randomtextgenerator.com/
+
+imr	Import React
+imrc	Import React Component
+imrpc	Import React PureComponent
+imrn	Import React-Native Element
+ims	Import Styled-Components
+imsn	Import Styled-Components Native
+rct	Redux constant
+crr	Connect Redux
+sl	Stateless Component
+slr	Stateless Component Return
+slc	Stateless Component Function
+ccs	Component Class
+cccs	Component Class With Constructor
+ccsf	Component Class FlowType
+pcs	PureComponent Class
+pccs	PureComponent Class With Constructor
+pcsf	PureComponent FlowType
+ccsr	Component Class With Redux
+edccs	Export default Component Class
+rrd	Redux Reducer
+rpf	Redux Pure Function
+rpc	Redux Pure Function Const
+cwm	ComponentWillMount
+cdm	ComponentDidMount
+cdu	ComponentDidUpdate
+scu	ShouldComponentUpdate
+cwu	ComponentWillUpdate
+cwum	ComponentWillUnmount
+cwrp	ComponentWillReceiveProps
+cdc	ComponentDidCatch
+rnss	StyleSheet Style
+ess	EStyleSheet Style
+ipt	Import PropTypes
+ed	Export default
+edl	EslintDisableLine
+styc	Styled Component
+estyc	Export Styled Component
+edstyc	Export default Styled Component
+cmmb	Comment Big Block
+log	Console Log
+cl	Standard console.log
+tdesc	Test Describe
+tit	Test It
+ffm	FlowFixMe

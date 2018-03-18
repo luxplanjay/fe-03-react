@@ -1,12 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import App from './components/App';
 import './index.css';
+import store from './store';
 
 render(
-  <BrowserRouter basename="fe-03-react/build">
-    <Route path="/" component={App} />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );

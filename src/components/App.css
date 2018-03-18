@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  width: 1200px;
+  margin: auto;
+  padding: 20px 10px;
+}
+
+.App__form {
+  margin-right: 40px;
+}
