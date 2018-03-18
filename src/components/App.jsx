@@ -17,7 +17,6 @@ class App extends Component {
     // const { balance } = this.props;
 
     const { isLoading } = this.props;
-    console.log('isLoading: ', isLoading);
 
     return (
       <div className={styles.app}>

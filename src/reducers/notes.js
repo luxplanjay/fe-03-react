@@ -12,6 +12,7 @@ export default function notes(state = initialState, { type, payload }) {
       return {
         ...state,
         isLoading: true,
+        err: null,
       };
     case types.ASYNC_ACTION_FAIL:
       return {
@@ -21,7 +22,8 @@ export default function notes(state = initialState, { type, payload }) {
       };
     case types.FETCH_NOTES_SUCCESS:
       return {
-        notes: payload,
+        ...state,
+        notes: [...payload.notes],
         isLoading: false,
         err: null,
       };
@@ -30,12 +32,14 @@ export default function notes(state = initialState, { type, payload }) {
         ...state,
         notes: state.notes.filter(note => note.id !== payload.noteId),
         isLoading: false,
+        err: null,
       };
     case types.ADD_NOTE_SUCCESS:
       return {
         ...state,
         notes: [...state.notes, payload.note],
         isLoading: false,
+        err: null,
       };
     default:
       return state;

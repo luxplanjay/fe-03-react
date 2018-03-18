@@ -16,6 +16,7 @@ export default {
     return new Promise(resolve => {
       setTimeout(() => {
         this.notes.push(newNote);
+
         resolve({ status: 200, newNote });
       }, 500);
     });

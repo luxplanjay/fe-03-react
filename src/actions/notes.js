@@ -14,7 +14,7 @@ const asyncActionFail = err => ({
 // fetch notes
 const fetchNotesSuccess = notes => ({
   type: types.FETCH_NOTES_SUCCESS,
-  payload: notes,
+  payload: { notes },
 });
 
 export const fetchNotes = () => dispatch => {
@@ -56,7 +56,6 @@ const addNoteSuccess = note => ({
 
 export const addNote = note => dispatch => {
   dispatch(asyncActionStart());
-  console.log('start');
 
   api
     .addNote(note)
