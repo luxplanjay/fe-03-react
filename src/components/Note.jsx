@@ -1,11 +1,13 @@
 import React from 'react';
-import './Note.css';
+import styles from './Note.css';
 
-const Note = ({ title, text }) => (
-  <div className="Note">
+const Note = ({ title, text, onDelete }) => (
+  <div className={styles.note}>
     <h3>{title}</h3>
     <p>{text}</p>
-    <button className="Note__btn-del">&times;</button>
+    <button className={styles.button} onClick={onDelete}>
+      &times;
+    </button>
   </div>
 );
 

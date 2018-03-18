@@ -1,4 +1,4 @@
-.Note {
+.note {
   position: relative;
   height: 100%;
   padding: 8px;
@@ -8,11 +8,11 @@
   cursor: pointer;
 }
 
-.Note:hover {
+.note:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.Note__btn-del {
+.button {
   border: none;
   position: absolute;
   top: 5px;
@@ -27,6 +27,6 @@
   cursor: pointer;
 }
 
-.Note__btn-del:hover {
+.button:hover {
   background-color: #2196f3;
 }

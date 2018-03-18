@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './NoteForm.css';
+import { connect } from 'react-redux';
+import { addNote } from '../actions';
+import styles from './NoteForm.css';
 
-export default class componentName extends Component {
+class NoteForm extends Component {
   state = {
     title: '',
     text: '',
@@ -10,42 +12,61 @@ export default class componentName extends Component {
   handleChange = (evt, type) => {
     const value = evt.target.value;
 
-    switch (type) {
-      case 'title':
-        return this.setState({ title: value });
-      case 'text':
-        return this.setState({ text: value });
-      default:
-        return console.warn(`No case for event type "${type}"`);
+    // Guard Clause
+    if (!(type in this.state)) {
+      console.warn(`No case for event type "${type}"`);
+      return;
     }
+
+    this.setState({
+      [type]: value,
+    });
+
+    // switch (type) {
+    //   case 'title':
+    //     return this.setState({ title: value });
+    //   case 'text':
+    //     return this.setState({ text: value });
+    //   default:
+    //     return console.warn(`No case for event type "${type}"`);
+    // }
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
 
-    console.log(JSON.stringify(this.state));
+    this.props.onAddNote({
+      title: this.state.title,
+      text: this.state.text,
+    });
   };
 
   render() {
     const { title, text } = this.state;
 
     return (
-      <form className="NoteForm" onSubmit={this.handleSubmit}>
+      <form className={styles.form} onSubmit={this.handleSubmit}>
         <input
-          className="NoteForm__input"
+          className={styles.input}
           type="text"
           placeholder="Note title"
           value={title}
           onChange={evt => this.handleChange(evt, 'title')}
         />
         <textarea
-          className="NoteForm__textarea"
+          className={styles.textarea}
           placeholder="Note text"
           value={text}
           onChange={evt => this.handleChange(evt, 'text')}
         />
-        <button className="NoteForm__btn">Add Note</button>
+        <button className={styles.button}>Add Note</button>
       </form>
     );
   }
 }
+
+const mDPT = dispatch => ({
+  onAddNote: note => dispatch(addNote(note)),
+});
+
+export default connect(null, mDPT)(NoteForm);

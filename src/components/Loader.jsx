@@ -1,4 +1,4 @@
 import React from 'react';
-import './Loader.css';
+import styles from './Loader.css';
 
-export default () => <div className="loader" />;
+export default () => <div className={styles.loader} />;

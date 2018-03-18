@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
-import Loader from './Loader';
 import { connect } from 'react-redux';
+import Loader from './Loader';
 import NoteForm from './NoteForm';
-import NotesList from './NotesList';
-import './App.css';
+import NotesListContainer from '../containers/NotesListContainer';
+import styles from './App.css';
+import { fetchNotes } from '../actions';
+// import Balance from './Balance';
+// import BalanceFormContainer from '../containers/BalanceFormContainer';
 
-export default class App extends Component {
-  state = {
-    inputValue: 0,
-  };
-
-  handleInputChange = evt => {
-    const value = evt.target.value;
-    this.setState({ inputValue: Number(value) });
-  };
+class App extends Component {
+  componentDidMount() {
+    this.props.onFetchNotes();
+  }
 
   render() {
-    const { inputValue } = this.state;
+    // const { balance } = this.props;
+
+    const { isLoading } = this.props;
+    console.log('isLoading: ', isLoading);
 
     return (
-      <div>
-        {/* <div className="App__form">
+      <div className={styles.app}>
+        <div className={styles.form}>
           <NoteForm />
         </div>
-        <div className="App__list">
-          <NotesList />
-        </div> */}
-
-        <h2>Account balance: 0$</h2>
-
-        <div>
-          <input
-            type="text"
-            value={inputValue}
-            onChange={this.handleInputChange}
-          />
-          <button>Deposit</button>
-          <button>Withdraw</button>
+        <div className={styles.list}>
+          {isLoading ? <Loader /> : <NotesListContainer />}
         </div>
+
+        {/* <Balance balance={balance} />
+        <BalanceFormContainer /> */}
       </div>
     );
   }
 }
+
+const mSTP = state => ({
+  isLoading: state.notes.isLoading,
+});
+
+const mDTP = dispatch => ({
+  onFetchNotes: () => dispatch(fetchNotes()),
+});
+
+export default connect(mSTP, mDTP)(App);

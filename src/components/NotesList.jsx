@@ -1,13 +1,12 @@
 import React from 'react';
 import Note from './Note';
-import notes from '../notes';
-import './NotesList.css';
+import styles from './NotesList.css';
 
-const NotesList = (props) => (
-  <ul className="NotesList">
+const NotesList = ({ notes, onDeleteNote }) => (
+  <ul className={styles.list}>
     {notes.map(note => (
-      <li className="NotesList__item" key={note.id}>
-        <Note {...note} />
+      <li className={styles.item} key={note.id}>
+        <Note {...note} onDelete={() => onDeleteNote(note.id)} />
       </li>
     ))}
   </ul>

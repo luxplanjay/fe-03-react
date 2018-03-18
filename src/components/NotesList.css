@@ -1,4 +1,4 @@
-.NotesList {
+.list {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -7,12 +7,12 @@
   list-style: none;
 }
 
-.NotesList__item {
+.item {
   flex: 1 0 45%;
 
   margin-bottom: 20px;
 }
 
-.NotesList__item:not(:nth-child(even)) {
+.item:not(:nth-child(even)) {
   margin-right: 20px;
 }
