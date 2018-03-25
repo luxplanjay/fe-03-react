@@ -1,6 +1,3 @@
-export const DEPOSIT = 'DEPOSIT';
-export const WITHDRAW = 'WITHDRAW';
-
 export const ASYNC_ACTION_START = 'ASYNC_ACTION_START';
 export const ASYNC_ACTION_FAIL = 'ASYNC_ACTION_FAIL';
 
@@ -8,5 +5,7 @@ export const FETCH_NOTES_SUCCESS = 'FETCH_NOTES_SUCCESS';
 export const DELETE_NOTE_SUCCESS = 'DELETE_NOTE_SUCCESS';
 export const ADD_NOTE_SUCCESS = 'ADD_NOTE_SUCCESS';
 
-// export const FETCH_NOTES = 'FETCH_NOTES';
-// export const DELETE_NOTE = 'DELETE_NOTE';
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';

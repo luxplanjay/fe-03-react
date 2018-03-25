@@ -1,13 +1,21 @@
 import React from 'react';
 import styles from './Note.css';
 
-const Note = ({ title, text, onDelete }) => (
+const Note = ({ id, title, text, onDelete }) => (
   <div className={styles.note}>
     <h3>{title}</h3>
     <p>{text}</p>
-    <button className={styles.button} onClick={onDelete}>
-      &times;
-    </button>
+
+    <ul className={styles.actions}>
+      <li>
+        <button className={styles.button} onClick={onDelete}>
+          &times;
+        </button>
+      </li>
+      <li>
+        <input type="checkbox" className={styles.checkbox} />
+      </li>
+    </ul>
   </div>
 );
 

@@ -12,14 +12,6 @@ const LoginPage = ({ history, location, onLogIn, onLogOut }) => (
       }}>
       Login
     </button>
-    <button
-      onClick={() => {
-        onLogOut();
-
-        history.push('/');
-      }}>
-      Logout
-    </button>
   </div>
 );
 

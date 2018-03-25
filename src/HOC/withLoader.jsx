@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Loader from '../components/Loader';
 
-const withLoader = WrappedComponent => {
-  return class extends Component {
-    render() {
-      const { isLoading } = this.props;
-
-      return isLoading ? <Loader /> : <WrappedComponent {...this.props} />;
-    }
-  };
-};
+// https://reactjs.org/docs/higher-order-components.html
+const withLoader = WrappedComponent => props =>
+  props.isLoading
+    ? <Loader />
+    : <WrappedComponent {...props} />;
 
 export default withLoader;

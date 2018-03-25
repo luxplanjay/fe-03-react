@@ -1,47 +1,52 @@
+import { combineReducers } from 'redux';
 import * as types from '../constants';
 
-const initialState = {
-  notes: [],
-  isLoading: false,
-  err: null,
-};
-
-export default function notes(state = initialState, { type, payload }) {
+function itemsReducer(state = [], { type, payload }) {
   switch (type) {
-    case types.ASYNC_ACTION_START:
-      return {
-        ...state,
-        isLoading: true,
-        err: null,
-      };
-    case types.ASYNC_ACTION_FAIL:
-      return {
-        ...state,
-        isLoading: false,
-        err: payload,
-      };
     case types.FETCH_NOTES_SUCCESS:
-      return {
-        ...state,
-        notes: [...payload.notes],
-        isLoading: false,
-        err: null,
-      };
+      return payload.notes;
+
     case types.DELETE_NOTE_SUCCESS:
-      return {
-        ...state,
-        notes: state.notes.filter(note => note.id !== payload.noteId),
-        isLoading: false,
-        err: null,
-      };
+      return state.filter(note => note.id !== payload.noteId);
+
     case types.ADD_NOTE_SUCCESS:
-      return {
-        ...state,
-        notes: [...state.notes, payload.note],
-        isLoading: false,
-        err: null,
-      };
+      return [...state, payload.note];
+
     default:
       return state;
   }
 }
+
+function isLoadingReducer(state = false, { type }) {
+  switch (type) {
+    case types.ASYNC_ACTION_START:
+      return true;
+    case types.ASYNC_ACTION_FAIL:
+    case types.ADD_NOTE_SUCCESS:
+    case types.FETCH_NOTES_SUCCESS:
+    case types.DELETE_NOTE_SUCCESS:
+      return false;
+    default:
+      return state;
+  }
+}
+
+function errorReducer(state = null, { type, payload }) {
+  switch (type) {
+    case types.ASYNC_ACTION_FAIL:
+      return payload;
+    case types.ASYNC_ACTION_START:
+    case types.FETCH_NOTES_SUCCESS:
+    case types.DELETE_NOTE_SUCCESS:
+    case types.ADD_NOTE_SUCCESS:
+      return null;
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  items: itemsReducer,
+  isLoading: isLoadingReducer,
+  error: errorReducer,
+});

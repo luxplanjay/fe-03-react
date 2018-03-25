@@ -1,5 +1,6 @@
 .list {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: stretch;
   padding: 0;
@@ -8,11 +9,6 @@
 }
 
 .item {
-  flex: 1 0 45%;
-
+  flex: 0 0 calc(50% - 10px);
   margin-bottom: 20px;
-}
-
-.item:not(:nth-child(even)) {
-  margin-right: 20px;
 }

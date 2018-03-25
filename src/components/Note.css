@@ -8,15 +8,26 @@
   cursor: pointer;
 }
 
+.completed {
+  background-color: rgba(76, 175, 80, 0.5);
+}
+
 .note:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.button {
-  border: none;
+.actions {
+  display: flex;
   position: absolute;
   top: 5px;
   right: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  border: none;
   width: 30px;
   height: 30px;
   background-color: #212121;
@@ -29,4 +40,13 @@
 
 .button:hover {
   background-color: #2196f3;
+}
+
+.checkbox {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
 }

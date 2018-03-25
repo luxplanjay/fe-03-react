@@ -1,29 +1,15 @@
-# Materials
+<!-- JSON SERVER -->
+https://medium.com/codingthesmartway-com-blog/create-a-rest-api-with-json-server-36da8680136d
 
-## Best Practises
+https://www.codementor.io/ayushgupta/how-to-use-json-server-to-create-mock-apis-0-lci958ear
 
-* https://medium.com/@nikgraf/why-you-should-enforce-dangling-commas-for-multiline-statements-d034c98e36f8
-* https://www.robinwieruch.de/react-provider-pattern-context/
-* https://medium.freecodecamp.org/why-arrow-functions-and-bind-in-reacts-render-are-problematic-f1c08b060e36
+<!-- JSON SERVER -->
+https://youtu.be/eDTi7lYR1VU
+https://youtu.be/wlXWYztWdUE
+https://youtu.be/GsVbRep06jw
 
-## Lifecycle
-
-* https://www.andreasreiterer.at/web-development/reactjs-lifecycle-methods
-
-## Patterns
-
-* https://reactpatterns.com/
-* https://habrahabr.ru/company/ruvds/blog/349198/
-* https://youtu.be/BcVAq3YFiuc
-
-## React Casts
-
-* https://www.youtube.com/watch?v=LTunyI2Oyzw&list=PLrg7k46JdVjfmL0iuo0lMrXAy4JFrz767
-* https://www.youtube.com/watch?v=lxq938kqIss&list=PLrg7k46JdVjezIQvpSaH2oekMQavdvgqv
-
-## Router
-
-* https://www.youtube.com/watch?v=ojYbcon588A&list=PLqrUy7kON1mfJ1cQfJJ1FiULLNngvlFTD
-* https://reacttraining.com/react-router/web/guides/philosophy
-* https://pshrmn.github.io/route-tester/#/
-* https://tylermcginnis.com/build-your-own-react-router-v4/
+<!-- NORMALIZR -->
+https://github.com/paularmstrong/normalizr
+https://tonyhb.gitbooks.io/redux-without-profanity/content/normalizer.html
+https://medium.com/farmdrop/using-normalizr-js-in-a-redux-store-96ab33991369
+https://hackernoon.com/using-normalizr-to-organize-data-in-stores-practical-guide-82fa061b60fb

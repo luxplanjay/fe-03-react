@@ -1,45 +1,46 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Loader from './Loader';
-import NoteForm from './NoteForm';
-import NotesListContainer from '../containers/NotesListContainer';
-import styles from './App.css';
-import { fetchNotes } from '../actions';
-// import Balance from './Balance';
-// import BalanceFormContainer from '../containers/BalanceFormContainer';
+import AppBar from './AppBar';
+import LoginPage from '../pages/LoginPage';
+import NotesPage from '../pages/NotesPage';
+import LogoutPage from '../pages/LogoutPage';
+import PrivateRoute from './PrivateRoute';
+import { getIsAuthenticated } from '../selectors';
+import { authCheckState } from '../actions';
 
 class App extends Component {
   componentDidMount() {
-    this.props.onFetchNotes();
+    this.props.checkAuthState();
   }
 
   render() {
-    // const { balance } = this.props;
-
-    const { isLoading } = this.props;
+    const { isAuthenticated } = this.props;
 
     return (
-      <div className={styles.app}>
-        <div className={styles.form}>
-          <NoteForm />
-        </div>
-        <div className={styles.list}>
-          {isLoading ? <Loader /> : <NotesListContainer />}
-        </div>
-
-        {/* <Balance balance={balance} />
-        <BalanceFormContainer /> */}
+      <div>
+        <AppBar />
+        <Switch>
+          <Route exact path="/" component={LoginPage} />
+          <PrivateRoute
+            path="/logout"
+            component={LogoutPage}
+            isAuthenticated={isAuthenticated}
+            redirectTo="/"
+          />
+          <PrivateRoute
+            path="/notes"
+            component={NotesPage}
+            isAuthenticated={isAuthenticated}
+            redirectTo="/"
+          />
+        </Switch>
       </div>
     );
   }
 }
 
-const mSTP = state => ({
-  isLoading: state.notes.isLoading,
-});
-
-const mDTP = dispatch => ({
-  onFetchNotes: () => dispatch(fetchNotes()),
-});
-
-export default connect(mSTP, mDTP)(App);
+export default connect(
+  state => ({ isAuthenticated: getIsAuthenticated(state) }),
+  dispatch => ({ checkAuthState: () => dispatch(authCheckState()) }),
+)(App);

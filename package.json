@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
+    "axios": "^0.18.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -25,6 +26,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
@@ -36,22 +38,28 @@
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
-    "uuid": "^3.2.1",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
     "webpack-manifest-plugin": "1.3.2",
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "generate-mock-data": "node build_scripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3002",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
+  "proxy": "http://localhost:3002/",
   "homepage": "https://axzerk.github.io/fe-03-react/build",
   "jest": {
     "collectCoverageFrom": [
@@ -96,6 +104,9 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
+    "json-schema-faker": "^0.5.0-rc13",
+    "json-server": "^0.12.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6"
   }

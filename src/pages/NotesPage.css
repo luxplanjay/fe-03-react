@@ -1,14 +1,11 @@
-.app {
+.content {
   display: flex;
   width: 1200px;
   margin: auto;
-  padding: 20px 10px;
+  padding: 0 10px;
 }
 
-.form {
+.content form {
   margin-right: 40px;
-}
-
-.list {
-
+  flex-shrink: 0;
 }

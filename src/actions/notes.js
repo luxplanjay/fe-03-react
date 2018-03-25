@@ -1,5 +1,5 @@
 import * as types from '../constants';
-import api from '../fakeAPI';
+import axios from 'axios';
 
 // common async
 const asyncActionStart = () => ({
@@ -18,13 +18,11 @@ const fetchNotesSuccess = notes => ({
 });
 
 export const fetchNotes = () => dispatch => {
-  // fetch().then(data => dispatch({}))
-
   dispatch(asyncActionStart());
 
-  api
-    .getNotes()
-    .then(notes => dispatch(fetchNotesSuccess(notes)))
+  axios
+    .get('/notes')
+    .then(response => dispatch(fetchNotesSuccess(response.data)))
     .catch(err => dispatch(asyncActionFail(err)));
 };
 
@@ -37,13 +35,15 @@ const deleteNoteSuccess = noteId => ({
 export const deleteNote = noteId => dispatch => {
   dispatch(asyncActionStart());
 
-  api
-    .deleteNote(noteId)
+  axios
+    .delete(`/notes/${noteId}`)
     .then(
-      ({ status }) =>
+      ({ status, statusText }) =>
         status === 200
           ? dispatch(deleteNoteSuccess(noteId))
-          : dispatch(asyncActionFail({ message: 'DELETE NOTE FAIL' })),
+          : dispatch(
+              asyncActionFail({ message: 'DELETE NOTE FAIL: ' + statusText }),
+            ),
     )
     .catch(err => dispatch(asyncActionFail(err)));
 };
@@ -57,12 +57,12 @@ const addNoteSuccess = note => ({
 export const addNote = note => dispatch => {
   dispatch(asyncActionStart());
 
-  api
-    .addNote(note)
+  axios
+    .post(`/notes`, note)
     .then(
-      ({ status, newNote }) =>
-        status === 200
-          ? dispatch(addNoteSuccess(newNote))
+      ({ status, data }) =>
+        status === 201
+          ? dispatch(addNoteSuccess(data))
           : dispatch(asyncActionFail({ message: 'ADD NOTE FAIL' })),
     )
     .catch(err => dispatch(asyncActionFail(err)));
